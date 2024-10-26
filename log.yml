@@ -1,0 +1,14 @@
+---
+-  name: Collect log files from Controlnode
+   hosts: controlnode
+   tasks:
+     -  name: Collect log files
+        fetch:
+          src: /var/log/syslog
+          dest: /home/eysiiii/Collectlog
+          flat: yes
+        register: syslog
+
+     -  name: View syslog
+        debug:
+          var: syslog
